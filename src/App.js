@@ -24,7 +24,7 @@ function App() {
     const pastSevenDateStrings = pastSevenDays.map(date => date.toDateString());
 
     // getrequest to coingecko
-    axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
+    axios.get(`https://api.coingecko.com/api/v3/coins/${searchText}/market_chart?vs_currency=cad&days=7&interval=daily`)
       .then((response) => {
 
         // map date and prices to tableRows array
@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <SearchBar searchText={searchText} setSearchText={setSearchText} setEnterKeyPushed={setEnterKeyPushed} onSearch={onSearch} />
       {enterKeyPushed && <TitleInfo searchText={searchText} />}
-      {enterKeyPushed && <PriceTable rows={rows} coin="BTC" />}
+      {enterKeyPushed && <PriceTable rows={rows} coin={searchText} />}
     </div>
   );
 }
