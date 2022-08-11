@@ -7,6 +7,7 @@ export default function TableRow (props) {
     <tr>
       <th>{props.date}</th>
       <th>${props.price}</th>
+      <th>${props.change24hr}</th>
     </tr>
   );
 }

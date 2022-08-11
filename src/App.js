@@ -10,27 +10,37 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [enterKeyPushed, setEnterKeyPushed] = useState(false);
 
-  //Take searchbar input and return coingecko coin prices last 7 days
+  //Take searchbar input and return coingecko coin prices last 8 days
   const onSearch = async (searchText) => {
 
-    // create array of dates of last 7 days
-    const pastSevenDays = [...Array(7).keys()].map(index => {
+    // create array of dates of last 8 days
+    const past8Days = [...Array(8).keys()].map(index => {
       const date = new Date();
       date.setDate(date.getDate() - index);
       return date;
     });
 
     //Turn date objects into date strings
-    const pastSevenDateStrings = pastSevenDays.map(date => date.toDateString());
+    const past8DateStrings = past8Days.map(date => date.toDateString());
 
     // getrequest to coingecko
-    axios.get(`https://api.coingecko.com/api/v3/coins/${searchText}/market_chart?vs_currency=cad&days=7&interval=daily`)
+    axios.get(`https://api.coingecko.com/api/v3/coins/${searchText}/market_chart?vs_currency=cad&days=8&interval=daily`)
       .then((response) => {
 
-        // map date and prices to tableRows array
-        const tableRows = pastSevenDateStrings.map((day, index) => {
-          return [day, response.data.prices[index][1]];
+        const prices = response.data.prices;
+
+        // map dates and prices to tableRows array
+        const tableRows = past8DateStrings.map((day, index) => {
+
+          let price = prices[index][1].toFixed(2);
+
+          let change24hr = (prices[index][1] - prices[index + 1][1]).toFixed(2);
+
+          return [day, price, change24hr];
         });
+
+        // remove 8th day info
+        tableRows.pop();
 
         console.log("tableRows: ", tableRows);
 
