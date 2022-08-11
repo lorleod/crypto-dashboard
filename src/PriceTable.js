@@ -4,7 +4,9 @@ import TableRow from "./TableRow";
 export default function PriceTable (props) {
 
   console.log("PriceTable props.rows: ", props.rows);
+
   const rowsArray = props.rows.map((row) => {
+    console.log("row.date", row.date);
     return (
       <TableRow
         key={row.date}
@@ -14,13 +16,19 @@ export default function PriceTable (props) {
     );
   });
 
+  console.log("PriceTable rowsArray: ", rowsArray);
+
   return (
     <table>
-      <tr>
-        <th>Date</th>
-        <th>Price</th>
-      </tr>
-      {rowsArray}
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rowsArray}
+      </tbody>
     </table>
   );
 }

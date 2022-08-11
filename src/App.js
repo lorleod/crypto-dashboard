@@ -17,12 +17,9 @@ function App() {
       return date;
     });
 
-    console.log("pastSevenDays: ", pastSevenDays);
-
     const fetchData = () => {
       axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
         .then((response) => {
-          console.log(response.data);
 
           const rows = pastSevenDays.map((day, index) => {
             return [day, response.data.prices[index][1]];
