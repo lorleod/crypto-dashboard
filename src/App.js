@@ -8,6 +8,7 @@ import TitleInfo from "./TitleInfo";
 function App() {
   const [rows, setRows] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [enterKeyPushed, setEnterKeyPushed] = useState(false);
 
   //Take search bar input and search coingecko for prices last 7 days
   const onSearch = async (searchText) => {
@@ -39,12 +40,9 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar searchText={searchText} setSearchText={setSearchText} onSearch={onSearch} />
-      <TitleInfo searchText={searchText} />
-      <p>
-        Compare the price and changes of Bitcoin to CAD for the week.
-      </p>
-      <PriceTable rows={rows} coin="BTC" />
+      <SearchBar searchText={searchText} setSearchText={setSearchText} setEnterKeyPushed={setEnterKeyPushed} onSearch={onSearch} />
+      {enterKeyPushed && <TitleInfo searchText={searchText} />}
+      {enterKeyPushed && <PriceTable rows={rows} coin="BTC" />}
     </div>
   );
 }

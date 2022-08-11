@@ -4,18 +4,19 @@ export default function SearchBar(props) {
   const onSearch = props.onSearch;
   const searchText = props.searchText;
   const setSearchText = props.setSearchText;
+  const setEnterKeyPushed = props.setEnterKeyPushed;
   console.log("props.setSearchText", props.setSearchText);
 
   //Changes state to input field
   const handleInput = (event) => {
-    const text = event.target.value;
-    console.log("setSearchText", setSearchText);
-    setSearchText(text);
+    setSearchText(event.target.value);
   };
 
   //Allows input to be submit by enter
   const handleEnter = (event) => {
     if (event.key === "Enter") {
+      setSearchText(event.target.value);
+      setEnterKeyPushed(true);
       onSearch(searchText);
     }
   };
@@ -35,7 +36,10 @@ export default function SearchBar(props) {
         onKeyPress={handleEnter}
         value={searchText}
       ></input>
+      <p>Push enter to search. Try "bitcoin" or "ethereum"!</p>
       <br />
+
     </form>
+
   );
 }
