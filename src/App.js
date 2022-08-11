@@ -22,11 +22,12 @@ function App() {
       axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
         .then((response) => {
           console.log(response.data);
-          let sevendayprices = [];
-          for (let price of response.data.prices) {
-            sevendayprices.push(price[1]);
-          }
-          console.log(sevendayprices);
+
+          const rows = pastSevenDays.map((day, index) => {
+            return [day, response.data.prices[index][1]];
+          });
+
+          console.log("rows: ", rows);
 
         })
         .catch((error) => {
@@ -37,10 +38,9 @@ function App() {
   }, []);
 
 
-
   return (
     <div className="App">
-      <PriceTable />
+      {/* <PriceTable rows={} /> */}
     </div>
   );
 }
