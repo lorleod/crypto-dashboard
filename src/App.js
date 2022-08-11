@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 
 function App() {
   const [rows, setRows] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   //Take search bar input and search coingecko for prices last 7 days
   const onSearch = async (searchText) => {
@@ -44,7 +45,7 @@ function App() {
       <p>
         Compare the price and changes of Bitcoin to CAD for the week.
       </p>
-      <PriceTable rows={rows} coin="BTC" />
+      <PriceTable searchText={searchText} setSearchText={setSearchText} rows={rows} coin="BTC" />
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React from "react";
 
 export default function SearchBar(props) {
   const onSearch = props.onSearch;
-  const [searchText, setSearchText] = useState("");
+  const searchText = props.searchText;
+  const setSearchText = props.setSearchText;
 
   //Changes state to input field
   const handleInput = (event) => {
