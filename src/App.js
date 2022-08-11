@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import PriceTable from "./PriceTable";
 
 function App() {
+  const [rows, setRows] = useState([]);
 
   // on load, get request prices last 7 days from coingecko
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
           });
 
           console.log("rows: ", rows);
+          setRows(rows);
 
         })
         .catch((error) => {
@@ -40,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <PriceTable rows={} /> */}
+      <PriceTable rows={rows} />
     </div>
   );
 }
