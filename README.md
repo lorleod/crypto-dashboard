@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Basic Crypto 7-day Price History Dashboard
+
+<img width="567" alt="Screen Shot 2022-08-11 at 12 22 28 PM" src="https://user-images.githubusercontent.com/3805194/184222455-ac4d1854-4e17-4099-beac-a3f302e620d5.png">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
