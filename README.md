@@ -2,6 +2,10 @@
 
 <img width="567" alt="Screen Shot 2022-08-11 at 12 22 28 PM" src="https://user-images.githubusercontent.com/3805194/184222455-ac4d1854-4e17-4099-beac-a3f302e620d5.png">
 
+A mini project to demo React skills and API calls.
+
+Dependencies: React, Axios
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
