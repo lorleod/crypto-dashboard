@@ -5,9 +5,12 @@ export default function PriceTable (props) {
 
   // console.log("PriceTable props.rows: ", props.rows);
 
+  let exampleRows = [["today", 123], ["Tuesday", 120], ["monday", 119]];
+
   let rowsArray = [];
+
   if (props.rows) {
-    const rowsArray = props.rows.map((row) => {
+    rowsArray = exampleRows.map((row) => {
       // console.log("row[0]", row[0]);
       return (
         <TableRow
@@ -17,9 +20,10 @@ export default function PriceTable (props) {
         />
       );
     });
+    console.log("PriceTableddd rowsArray: ", rowsArray);
   };
 
-  // console.log("PriceTable rowsArray: ", rowsArray);
+  console.log("PriceTable rowsArray: ", rowsArray);
 
   return (
     <table>
