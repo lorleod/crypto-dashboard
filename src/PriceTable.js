@@ -17,7 +17,8 @@ export default function PriceTable (props) {
           key={row[0]}
           date={row[0]}
           price={row[1]}
-          change24hr={row[2]}
+          absoluteChange24hr={row[2]}
+          percentChange24hr={row[3]}
         />
       );
     });
@@ -33,6 +34,7 @@ export default function PriceTable (props) {
           <th>Date</th>
           <th>1 {props.coin} to CAD</th>
           <th>24hr Change</th>
+          <th>24hr % Change</th>
         </tr>
       </thead>
       <tbody>

@@ -32,11 +32,16 @@ function App() {
         // map dates and prices to tableRows array
         const tableRows = past8DateStrings.map((day, index) => {
 
-          let price = prices[index][1].toFixed(2);
+          // price rounded to 2 decimal places
+          let price = (Math.round((prices[index][1] + Number.EPSILON) * 100) / 100).toFixed(2);
 
-          let change24hr = (prices[index][1] - prices[index + 1][1]).toFixed(2);
+          //24hr change rounded to 2 decimal places
+          let absoluteChange24hr = (Math.round(((prices[index][1] - prices[index + 1][1]) + Number.EPSILON) * 100) / 100).toFixed(2);
 
-          return [day, price, change24hr];
+          //24hr change in percent rounded to 2 decimal places
+          let percentChange24hr = (Math.round(((((prices[index][1] - prices[index + 1][1]) / prices[index + 1][1]) * 100) + Number.EPSILON) * 100) / 100).toFixed(2);
+
+          return [day, price, absoluteChange24hr, percentChange24hr];
         });
 
         // remove 8th day info

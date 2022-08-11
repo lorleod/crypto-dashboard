@@ -35,7 +35,7 @@ export default function SearchBar(props) {
         onKeyPress={handleEnter}
         value={searchText}
       ></input>
-      <p>Push enter to search. Try "bitcoin" or "ethereum"!</p>
+      <p>Push enter to search for a coin's API ID. Try "bitcoin" or "ethereum"!</p>
       <br />
 
     </form>
