@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import PriceTable from "./PriceTable";
 
 function App() {
 
@@ -35,9 +36,11 @@ function App() {
     fetchData();
   }, []);
 
+
+
   return (
     <div className="App">
-
+      <PriceTable />
     </div>
   );
 }
