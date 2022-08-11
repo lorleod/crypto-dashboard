@@ -36,7 +36,13 @@ function App() {
 
   return (
     <div className="App">
-      <PriceTable rows={rows} />
+      <h1>
+        7-Day Price History of Bitcoin to CAD
+      </h1>
+      <p>
+        Compare the price and changes of Bitcoin to CAD for the week.
+      </p>
+      <PriceTable rows={rows} coin="BTC" />
     </div>
   );
 }

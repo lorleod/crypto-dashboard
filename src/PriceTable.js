@@ -30,7 +30,7 @@ export default function PriceTable (props) {
       <thead>
         <tr>
           <th>Date</th>
-          <th>Price</th>
+          <th>1 {props.coin} to CAD</th>
         </tr>
       </thead>
       <tbody>
