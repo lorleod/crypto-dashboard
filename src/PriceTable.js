@@ -3,14 +3,14 @@ import TableRow from "./TableRow";
 
 export default function PriceTable (props) {
 
-  // console.log("PriceTable props.rows: ", props.rows);
+  console.log("PriceTable props.rows: ", props.rows);
 
   let exampleRows = [["today", 123], ["Tue Aug 09 2022", 120], ["Weds Aug 08 2022", 119]];
 
   let rowsArray = [];
 
   if (props.rows) {
-    rowsArray = exampleRows.map((row) => {
+    rowsArray = props.rows.map((row) => {
       // console.log("row[0]", row[0]);
       return (
         <TableRow
