@@ -7,9 +7,8 @@ import SearchBar from "./SearchBar";
 function App() {
   const [rows, setRows] = useState([]);
 
-  // on load, get request prices last 7 days from coingecko
-  useEffect(() => {
-
+  //Take search bar input and search coingecko for prices last 7 days
+  const onSearch = async (searchText) => {
     // create array of dates of last 7 days
     const pastSevenDays = [...Array(7).keys()].map(index => {
       const date = new Date();
@@ -21,6 +20,7 @@ function App() {
     axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
       .then((response) => {
 
+        // map date and prices to tableRows array
         const tableRows = pastSevenDays.map((day, index) => {
           return [day, response.data.prices[index][1]];
         });
@@ -32,12 +32,12 @@ function App() {
       .catch((error) => {
         console.log("error:", error)
       });
-  }, []);
+  };
 
 
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar onSearch={onSearch} />
       <h1>
         7-Day Price History of Bitcoin to CAD
       </h1>
