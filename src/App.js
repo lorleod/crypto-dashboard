@@ -17,23 +17,20 @@ function App() {
       return date;
     });
 
-    const fetchData = () => {
-      axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
-        .then((response) => {
+    axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=cad&days=7&interval=daily`)
+      .then((response) => {
 
-          const tableRows = pastSevenDays.map((day, index) => {
-            return [day, response.data.prices[index][1]];
-          });
-
-          console.log("tableRows: ", tableRows);
-
-          setRows(tableRows);
-        })
-        .catch((error) => {
-          console.log("error:", error)
+        const tableRows = pastSevenDays.map((day, index) => {
+          return [day, response.data.prices[index][1]];
         });
-    };
-    fetchData();
+
+        console.log("tableRows: ", tableRows);
+
+        setRows(tableRows);
+      })
+      .catch((error) => {
+        console.log("error:", error)
+      });
   }, []);
 
 
