@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import PriceTable from "./PriceTable";
+import SearchBar from "./SearchBar";
 
 function App() {
   const [rows, setRows] = useState([]);
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <SearchBar />
       <h1>
         7-Day Price History of Bitcoin to CAD
       </h1>
