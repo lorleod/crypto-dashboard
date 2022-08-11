@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import PriceTable from "./PriceTable";
 import SearchBar from "./SearchBar";
+import TitleInfo from "./TitleInfo";
 
 function App() {
   const [rows, setRows] = useState([]);
@@ -26,7 +27,7 @@ function App() {
           return [day, response.data.prices[index][1]];
         });
 
-        console.log("tableRows: ", tableRows);
+        // console.log("tableRows: ", tableRows);
 
         setRows(tableRows);
       })
@@ -38,14 +39,12 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar onSearch={onSearch} />
-      <h1>
-        7-Day Price History of Bitcoin to CAD
-      </h1>
+      <SearchBar searchText={searchText} setSearchText={setSearchText} onSearch={onSearch} />
+      <TitleInfo searchText={searchText} />
       <p>
         Compare the price and changes of Bitcoin to CAD for the week.
       </p>
-      <PriceTable searchText={searchText} setSearchText={setSearchText} rows={rows} coin="BTC" />
+      <PriceTable rows={rows} coin="BTC" />
     </div>
   );
 }

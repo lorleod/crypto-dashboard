@@ -4,10 +4,12 @@ export default function SearchBar(props) {
   const onSearch = props.onSearch;
   const searchText = props.searchText;
   const setSearchText = props.setSearchText;
+  console.log("props.setSearchText", props.setSearchText);
 
   //Changes state to input field
   const handleInput = (event) => {
     const text = event.target.value;
+    console.log("setSearchText", setSearchText);
     setSearchText(text);
   };
 

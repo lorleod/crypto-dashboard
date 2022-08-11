@@ -20,10 +20,10 @@ export default function PriceTable (props) {
         />
       );
     });
-    console.log("PriceTableddd rowsArray: ", rowsArray);
+    // console.log("PriceTableddd rowsArray: ", rowsArray);
   };
 
-  console.log("PriceTable rowsArray: ", rowsArray);
+  // console.log("PriceTable rowsArray: ", rowsArray);
 
   return (
     <table>
