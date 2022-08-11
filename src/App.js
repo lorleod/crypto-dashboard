@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import PriceTable from "./PriceTable";
@@ -13,51 +13,47 @@ function App() {
   //Take searchbar input and return coingecko coin prices last 8 days
   const onSearch = async (searchText) => {
 
-    // create array of dates of last 8 days
+    // create array of last 8 days' dates
     const past8Days = [...Array(8).keys()].map(index => {
       const date = new Date();
       date.setDate(date.getDate() - index);
       return date;
     });
 
-    //Turn date objects into date strings
+    //Convert date objects into date strings
     const past8DateStrings = past8Days.map(date => date.toDateString());
 
-    // getrequest to coingecko
+    // get request to coingecko with search text, then calculate and setRows data
     axios.get(`https://api.coingecko.com/api/v3/coins/${searchText}/market_chart?vs_currency=cad&days=8&interval=daily`)
       .then((response) => {
 
         const prices = response.data.prices;
 
-        // map dates and prices to tableRows array
+        // map dates, prices, and 24hr changes to tableRows array
         const tableRows = past8DateStrings.map((day, index) => {
 
-          // price rounded to 2 decimal places
+          // price from coingecko rounded to 2 decimal places
           let price = (Math.round((prices[index][1] + Number.EPSILON) * 100) / 100).toFixed(2);
 
-          //24hr change rounded to 2 decimal places
+          //24hr change (price today - price day before) rounded to 2 decimal places
           let absoluteChange24hr = (Math.round(((prices[index][1] - prices[index + 1][1]) + Number.EPSILON) * 100) / 100).toFixed(2);
 
-          //24hr change in percent rounded to 2 decimal places
+          //24hr change in percent (24hr change / price day before * 100) rounded to 2 decimal places
           let percentChange24hr = (Math.round(((((prices[index][1] - prices[index + 1][1]) / prices[index + 1][1]) * 100) + Number.EPSILON) * 100) / 100).toFixed(2);
 
           return [day, price, absoluteChange24hr, percentChange24hr];
         });
 
-        // remove 8th day info
+        // remove 8th day data
         tableRows.pop();
-
-        console.log("tableRows: ", tableRows);
 
         setRows(tableRows);
 
-        console.log("rows", rows);
       })
       .catch((error) => {
         console.log("error:", error)
       });
   };
-
 
   return (
     <div className="App">

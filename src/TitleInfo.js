@@ -1,5 +1,6 @@
 import React from "react";
 
+// Title of table plus additional info
 export default function TitleInfo (props) {
 
   return (

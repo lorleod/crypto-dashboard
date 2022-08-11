@@ -1,17 +1,15 @@
 import React from 'react';
 import TableRow from "./TableRow";
 
+// Table of date and price information about searched coin
 export default function PriceTable (props) {
 
-  console.log("PriceTable props.rows: ", props.rows);
-
-  let exampleRows = [["today", 123], ["Tue Aug 09 2022", 120], ["Weds Aug 08 2022", 119]];
-
+  // empty array to prevent undefined errors
   let rowsArray = [];
 
+  //if props.rows is true, then map to TableRow components
   if (props.rows) {
     rowsArray = props.rows.map((row) => {
-      // console.log("row[0]", row[0]);
       return (
         <TableRow
           key={row[0]}
@@ -22,10 +20,7 @@ export default function PriceTable (props) {
         />
       );
     });
-    // console.log("PriceTableddd rowsArray: ", rowsArray);
   };
-
-  // console.log("PriceTable rowsArray: ", rowsArray);
 
   return (
     <table>

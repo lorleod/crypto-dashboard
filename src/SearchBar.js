@@ -1,5 +1,6 @@
 import React from "react";
 
+// text field for user to input coin API ID
 export default function SearchBar(props) {
   const onSearch = props.onSearch;
   const searchText = props.searchText;
@@ -26,6 +27,7 @@ export default function SearchBar(props) {
   };
   return (
     <form onSubmit={handleSubmit}>
+      <p>Search:</p>
       <input
         className="search-bar-input"
         type="text"
