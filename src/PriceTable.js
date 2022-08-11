@@ -5,7 +5,7 @@ export default function PriceTable (props) {
 
   // console.log("PriceTable props.rows: ", props.rows);
 
-  let exampleRows = [["today", 123], ["Tuesday", 120], ["monday", 119]];
+  let exampleRows = [["today", 123], ["Tue Aug 09 2022", 120], ["Weds Aug 08 2022", 119]];
 
   let rowsArray = [];
 
